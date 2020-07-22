@@ -119,9 +119,9 @@ static void _gui_convert_gps_data_to_string (_gui_aux_labels *aux_labels)
     int_to_string(aux_labels->tracked_satellites, sizeof(tracked_satellite_chr), tracked_satellite_chr);
 
     concatenate_strings(aux_labels->latitude_string, lat_chr);
-	concatenate_strings(aux_labels->longitude_string, long_chr);
+    concatenate_strings(aux_labels->longitude_string, long_chr);
     concatenate_strings(aux_labels->altitude_string, altitude_chr);
-	concatenate_strings(aux_labels->tracked_satellite_string, tracked_satellite_chr);
+    concatenate_strings(aux_labels->tracked_satellite_string, tracked_satellite_chr);
 }
 
 static void _gui_set_gps_text_labels(_gui_aux_labels *aux_labels)

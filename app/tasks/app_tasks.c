@@ -40,7 +40,7 @@ void lvgl_task(void const * argument)
 
 void imu_task(void const * argument)
 {
-	osEvent evt;
+    osEvent evt;
     // uint8_t ret = 0;
     // ret = imu_init();
     // if (ret != 0) {

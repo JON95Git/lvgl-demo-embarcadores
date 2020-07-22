@@ -2,12 +2,12 @@
 
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
-	gps_callback(huart);
+    gps_callback(huart);
 }
 
 void HAL_UART_ErrorCallback(UART_HandleTypeDef *huart)
 {
-	gps_callback_error(huart);
+    gps_callback_error(huart);
 }
 
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc)
