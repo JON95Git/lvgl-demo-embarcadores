@@ -1,0 +1,43 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558 
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "make",
+            "command": "make",
+            "group": "build",
+            "problemMatcher": [
+                "$gcc"
+            ]
+        }
+        {
+            "type": "shell",
+            "label": "make clean",
+            "command": "make clean",
+            "group": "build",
+            "problemMatcher": [
+                "$gcc"
+            ]
+        }
+        {
+            "type": "shell",
+            "label": "make LANDSCAPE",
+            "command": "make ORIENT=-DLANDSCAPE",
+            "group": "build",
+            "problemMatcher": [
+                "$gcc"
+            ]
+        }
+        {
+            "type": "shell",
+            "label": "flash",
+            "command": "openocd -f /usr/local/share/openocd/scripts/board/stm32f429discovery.cfg  -c 'program build/lvgl-demo-embarcadores.bin  0x08000000 verify reset exit'",
+            "group": "build",
+            "problemMatcher": [
+                "$gcc"
+            ]
+        }
+    ]
+}

@@ -1,0 +1,22 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"type_traits": "c",
+			"cstdint": "cpp",
+			"typeinfo": "cpp",
+			"dma.h": "c",
+			"cmath": "c",
+			"lv_demo_keypad_encoder.h": "c"
+		},
+		"stm32-for-vscode.openocdPath": "openocd",
+		"cortex-debug.openocdPath": "openocd",
+		"stm32-for-vscode.makePath": "make",
+		"stm32-for-vscode.armToolchainPath": "",
+		"cortex-debug.armToolchainPath": ""
+	}
+}

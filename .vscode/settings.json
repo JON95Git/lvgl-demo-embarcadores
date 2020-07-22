@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "type_traits": "c",
+        "cstdint": "cpp",
+        "typeinfo": "cpp"
+    },
+    "editor.fontSize": 12
+}

@@ -1,0 +1,64 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/Core/Inc/**",
+                "${workspaceFolder}/Drivers/STM32F4xx_HAL_Driver/Inc/**",
+                "${workspaceFolder}/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/**",
+                "${workspaceFolder}/Middlewares/Third_Party/FreeRTOS/Source/include/**",
+                "${workspaceFolder}/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/**",
+                "${workspaceFolder}/Middlewares/ST/STM32_USB_Host_Library/Core/Inc/**",
+                "${workspaceFolder}/Middlewares/ST/STM32_USB_Host_Library/Class/CDC/Inc/**",
+                "${workspaceFolder}/Drivers/CMSIS/Device/ST/STM32F4xx/Include/**",
+                "${workspaceFolder}/Drivers/CMSIS/Include/**",
+                "${workspaceFolder}/Drivers/CMSIS/Include/**",
+                "${workspaceFolder}/app/drivers/l3gd20/**",
+                "${workspaceFolder}/app/drivers/Common/**",
+                "${workspaceFolder}/app/drivers/stmpe811/**",
+                "${workspaceFolder}/app/drivers/ili9341/**",
+                "${workspaceFolder}/app/gui/lvgl/**",
+                "${workspaceFolder}/app/gui/lvgl/src/**",
+                "${workspaceFolder}/app/gui/lvgl/src/lv_core/**",
+                "${workspaceFolder}/app/gui/lvgl/src/lv_draw/**",
+                "${workspaceFolder}/app/gui/lvgl/src/lv_hal/**",
+                "${workspaceFolder}/app/gui/lvgl/src/lv_misc/**",
+                "${workspaceFolder}/app/gui/lvgl/src/lv_themes/**",
+                "${workspaceFolder}/app/gui/lv_examples/**",
+                "${workspaceFolder}/app/gui/lv_examples/src/lv_demo_widgets/**",
+                "${workspaceFolder}/app/gui/lv_examples/src/lv_demo_printer/**",
+                "${workspaceFolder}/app/drivers/tft/**",
+                "${workspaceFolder}/app/drivers/minmea/**",
+                "${workspaceFolder}/Drivers/STM32F4xx_HAL_Driver/Inc/**",
+                "${workspaceFolder}/Drivers/CMSIS/Device/ST/STM32F4xx/Include/**"
+            ],
+            "defines": [],
+            "compilerPath": "/home/jonathan/Toolchains/gcc-arm-none-eabi-8-2019-q3-update/bin/arm-none-eabi-gcc",
+            "cStandard": "c99",
+            "cppStandard": "gnu++14",
+            "intelliSenseMode": "gcc-arm",
+            "compilerArgs": [
+                "-DSTM32F429xx"
+            ],
+            "browse": {
+                "path": [
+                    "${workspaceFolder}/**",
+                    "${workspaceFolder}/Core/Inc/**",
+                    "${workspaceFolder}/Drivers/STM32F4xx_HAL_Driver/Inc/**",
+                    "${workspaceFolder}/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/**",
+                    "${workspaceFolder}/Middlewares/Third_Party/FreeRTOS/Source/include/**",
+                    "${workspaceFolder}/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/**",
+                    "${workspaceFolder}/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/**",
+                    "${workspaceFolder}/Middlewares/ST/STM32_USB_Host_Library/Core/Inc/**",
+                    "${workspaceFolder}/Middlewares/ST/STM32_USB_Host_Library/Class/CDC/Inc/**",
+                    "${workspaceFolder}/Drivers/CMSIS/Device/ST/STM32F4xx/Include/**",
+                    "${workspaceFolder}/Drivers/CMSIS/Include/**",
+                    "${workspaceFolder}/Drivers/CMSIS/Include/**"
+                ],
+                "limitSymbolsToIncludedHeaders": true
+            }
+        }
+    ],
+    "version": 4
+}
