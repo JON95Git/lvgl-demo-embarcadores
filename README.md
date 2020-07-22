@@ -21,4 +21,17 @@ Para realizar a compilação e execução do projeto será necessário:
 - Ferramenta `openOCD` para gravação e depuração do firmware
 
 ## Simulador
-Caso o usuário não disponha do hardware necessário, pode se utilizar o [simulador](https://github.com/lvgl/lv_sim_eclipse_sdl) para rodar apenas a aplicação gráfica de alto nível presente em `app/gui`.
+Caso o usuário não disponha do hardware necessário, pode se utilizar o [simulador](https://github.com/lvgl/lv_sim_eclipse_sdl) para rodar apenas a aplicação gráfica de alto nível diretamente no computador host. A aplicação gráfica está isolada em `app/gui`.
+
+Para utilizar o `simulador` é necessário fazer com que os arquivos presentes em `app/gui` estejam visíveis para o `simulador`. Isso pode ser feito utilizando `links simbólicos`.
+
+Para criar `links simbólicos` da aplicação gráfica para o `simulador`, execute:
+
+```
+ln -s ."path-to-embedded-project/gui/*.c" "path-to-simulator-project/gui/"
+ln -s ."path-to-embedded-project/gui/*.h" "path-to-simulator-project/gui/"
+ln -s ."path-to-embedded-project/gui/components/*.c" "path-to-simulator-project/gui/components/"
+ln -s ."path-to-embedded-project/gui/components/*.h" "path-to-simulator-project/gui/components/"
+```
+
+Dessa forma, toda alteração realizada em qualquer um dos projetos (`firmware` ou `simulador`) será vista por ambas as partes.
