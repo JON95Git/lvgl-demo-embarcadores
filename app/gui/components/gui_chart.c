@@ -31,8 +31,8 @@ static void _gui_define_chart_curves(void)
     chart_st.roll_line = lv_chart_add_series(chart_st.chart, LV_COLOR_NAVY);
 
     for (int i = 0; i < CHART_POINTS_NUMBER; i++) {
-        lv_chart_set_next(chart_st.chart, chart_st.pitch_line, 50);
-        lv_chart_set_next(chart_st.chart, chart_st.roll_line, 50);
+        lv_chart_set_next(chart_st.chart, chart_st.pitch_line, CHART_OFFSET_VALUE);
+        lv_chart_set_next(chart_st.chart, chart_st.roll_line, CHART_OFFSET_VALUE);
     }
 }
 
@@ -73,8 +73,8 @@ static void _gui_update_chart_points(gui_chart_st *chart, int16_t pitch, int16_t
 {
     for (int i = 0; i < CHART_POINTS_NUMBER; i++) {
         if (i == (CHART_POINTS_NUMBER - 1)) {
-            chart->pitch_line->points[i] = (int16_t)pitch + 50;
-            chart->roll_line->points[i] = (int16_t)roll + 50;
+            chart->pitch_line->points[i] = (int16_t)pitch + CHART_OFFSET_VALUE;
+            chart->roll_line->points[i] = (int16_t)roll + CHART_OFFSET_VALUE;
         } else {
             chart->pitch_line->points[i] = chart->pitch_line->points[i + 1];
             chart->roll_line->points[i] = chart->roll_line->points[i + 1];

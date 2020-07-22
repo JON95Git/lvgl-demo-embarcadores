@@ -7,11 +7,17 @@
 #include "minmea.h"
 #include "system.h"
 
+typedef enum {
+    GPS_PARSE_ERR_SUCESS = 0,
+    GPS_PARSE_ERR_FAILED,
+} _gps_parse_err_t;
+
 #define GPS_USART_INSTANCE USART1
 #define	GPS_USART huart1
 #define	GPS_USART_IRQn USART1_IRQn
 #define GPS_DMA_IRQn DMA2_Stream2_IRQn
 #define	GPS_TASK_SIGNAL 0x0001
+
 // #define GPS_DEBUG
 
 extern osThreadId gpsTaskHandle;

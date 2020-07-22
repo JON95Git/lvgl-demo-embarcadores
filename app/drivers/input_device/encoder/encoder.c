@@ -21,13 +21,13 @@ void encoder_callback(TIM_HandleTypeDef *htim)
 
 void encoder_button_callback(uint16_t GPIO_Pin)
 {
-	static unsigned long last_interrupt_time = 0;
+    static unsigned long last_interrupt_time = 0;
     unsigned long interrupt_time = timer_get_current_tick();
     
     if (GPIO_Pin == ENCODER_SW_Pin) {
-		if (interrupt_time - last_interrupt_time > 300) {
+        if (interrupt_time - last_interrupt_time > ENCODER_DEBOUNCE_TIME) {
             encoder_btn_flag = true;
-		}
-	}
-	last_interrupt_time = interrupt_time;
+        }
+    }
+    last_interrupt_time = interrupt_time;
 }
