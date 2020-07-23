@@ -4,9 +4,21 @@ Aplicação de exemplo usando a biblioteca gráfica [LVGL](https://github.com/lv
 # Introdução
 O presente projeto foi desenvolvido com o intuito de demonstrar a utlização da biblioteca gráfica open source [LVGL](https://github.com/lvgl/lvgl). Essa biblioteca é escrita em linguagem `C`, voltada principalmente para criação de `GUI's` (*Graphical User Interface*) para microcontroladores e sistemas com poucos recursos.
 
-A plataforma *target* microcontrolada utilizada foi o kit de desenvolvimento `STM32F429- Discovery`, pois o mesmo possui interface com display *TFT*, facilitando a prototipação e desenvolvimento.
+A plataforma *target* microcontrolada utilizada foi o kit de desenvolvimento `STM32F429-Discovery`, pois o mesmo possui interface com display *TFT*, facilitando a prototipação e desenvolvimento.
 
-O código é portável entre plataformas `x86`(simulador) e `arm` (STM32), mediante configuração de build.
+O código é portável entre plataformas `x86` (simulador) e `arm` (STM32), mediante configuração de build.
+
+# Entendendo a aplicação
+A aplicação interfaceia alguns dispositivos de hardware e utiliza seus dados como fonte de atualização de componentes gráficos na tela.
+A tela da nossa aplicação é criada apartir de uma `tabview`, um componente gráfico (*widget*) que permite a inserção de múltiplas `tabs` (abas).
+Cada `tab` corresponde a um dispositivos de hardware em específico:
+- GPS tab: mostra os dados de um módulo GPS
+- Gauge tab: mostra o valor de um potenciômetro
+- IMU tab: mostra os valores de um módulo de IMU
+
+![Aplicacao](lvgl-demo-embarcadores.png)
+
+Embora o display utilizado possua um controlador de *touchscreen*, a escolha final foi utilizar um hardware externo como dispositivo de entrada, no caso um `encoder rotativo`.
 
 # Dependências
 
@@ -163,7 +175,7 @@ $ make clean
 ```
 
 # Gravando o firmware na placa
-Para gravar o firmware é necessário possuir instalado o `openOCD` instalado na máquina.
+Para gravar o firmware é necessário possuir o `openOCD` instalado na máquina.
 Executa o seguinte comando:
 
 ```bash
