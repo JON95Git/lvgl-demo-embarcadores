@@ -129,16 +129,18 @@ Para criar `links simbólicos` da aplicação gráfica para o `simulador`, execu
 
 ```bash
 # Cria link simbólico dos arquivos .c
-$ ln -s lvgl-demo-embarcadores/gui/*.c pc_simulator_sdl_eclipse/gui/
+$ ln -s ../../lvgl-demo-embarcadores/app/gui/*.c .
 
 # Cria link simbólico dos arquivos .h
-$ ln -s lvgl-demo-embarcadores/gui/*.h pc_simulator_sdl_eclipse/gui/
+$ ln -s ../../lvgl-demo-embarcadores/app/gui/*.h .
+
+$ cd components
 
 # Cria link simbólico dos arquivos .c
-$ ln -s lvgl-demo-embarcadores/gui/components/*.c pc_simulator_sdl_eclipse/gui/components/
+$ ln -s ../../../lvgl-demo-embarcadores/app/gui/components/*.c .
 
 # Cria link simbólico dos arquivos .h
-$ ln -s lvgl-demo-embarcadores/gui/components/*.h pc_simulator_sdl_eclipse/gui/components/
+$ ln -s ../../../lvgl-demo-embarcadores/app/gui/components/*.h .
 ```
 Ao final, haverá uma hierarquia de diretórios da seguinte forma:
 
