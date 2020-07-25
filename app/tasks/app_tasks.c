@@ -20,8 +20,8 @@ void app_create_tasks(void)
     osThreadDef(lvglTask, lvgl_task, osPriorityHigh, 0, 2048);
     lvglTaskHandle = osThreadCreate(osThread(lvglTask), NULL);
     
-    // osThreadDef(imuTask, imu_task, osPriorityNormal, 0, 512);
-    // imuTaskHandle = osThreadCreate(osThread(imuTask), NULL);
+    osThreadDef(imuTask, imu_task, osPriorityNormal, 0, 512);
+    imuTaskHandle = osThreadCreate(osThread(imuTask), NULL);
 
     osThreadDef(analogTask, analog_task, osPriorityNormal, 0, 512);
     analogTaskHandle = osThreadCreate(osThread(analogTask), NULL);
@@ -41,12 +41,6 @@ void lvgl_task(void const * argument)
 void imu_task(void const * argument)
 {
     osEvent evt;
-    // uint8_t ret = 0;
-    // ret = imu_init();
-    // if (ret != 0) {
-    //     error_handler();
-    // }
-    // time_base_init();
     for (;;) {
         evt = osSignalWait(IMU_TASK_SIGNAL, osWaitForever);
         if (evt.status == osEventSignal)  {
