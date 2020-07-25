@@ -13,6 +13,10 @@ static void _gui_create_gps_labels(void);
 static void _gui_add_style_to_gps_labels(void);
 static void _gui_create_gps_task(void);
 
+#ifndef EMBEDDED
+static void  gps_get_parsed_data_simulator(float *latitude, float *longitude, int32_t *altitude, int32_t *tracked_satellites);
+#endif
+
 void gui_create_gps_labels(lv_obj_t *parent)
 {
     _gui_create_gps_style();
@@ -87,6 +91,9 @@ static void update_gps_labels_callback(lv_task_t *task)
 #ifdef EMBEDDED
     gps_get_parsed_data(&aux_labels.latitude, &aux_labels.longitude, 
                         &aux_labels.altitude, &aux_labels.tracked_satellites);
+#else 
+    gps_get_parsed_data_simulator(&aux_labels.latitude, &aux_labels.longitude, 
+                        &aux_labels.altitude, &aux_labels.tracked_satellites);
 #endif
 
     _gui_convert_gps_data_to_string(&aux_labels);
@@ -131,3 +138,15 @@ static void _gui_set_gps_text_labels(_gui_aux_labels *aux_labels)
     gui_set_text_label(gps_screen.altitude_label.label , aux_labels->altitude_string);
     gui_set_text_label(gps_screen.tracked_satellites_label.label , aux_labels->tracked_satellite_string);
 }
+
+#ifndef EMBEDDED
+static void  gps_get_parsed_data_simulator(float *latitude, float *longitude, int32_t *altitude, int32_t *tracked_satellites)
+{
+    static float lat = 0, longtd = 0;
+    static int32_t alt = 0, track = 0;
+    *latitude = ++lat;
+    *longitude = ++longtd;
+    *altitude = ++alt;
+    *tracked_satellites = ++track;
+}
+#endif
