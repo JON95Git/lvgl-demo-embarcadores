@@ -9,6 +9,10 @@ static void _gui_create_chart_label(lv_obj_t *parent);
 static void _gui_create_chart_task(void);
 static void _gui_update_chart_points(gui_chart_st *chart, int16_t pitch, int16_t roll);
 
+#ifndef EMBEDDED
+static void  imu_get_pitch_and_roll_simulator(int16_t *pitch, int16_t *roll);
+#endif
+
 void gui_create_chart(lv_obj_t *parent)
 {
     _gui_create_chart(parent);
@@ -31,8 +35,8 @@ static void _gui_define_chart_curves(void)
     chart_st.roll_line = lv_chart_add_series(chart_st.chart, LV_COLOR_NAVY);
 
     for (int i = 0; i < CHART_POINTS_NUMBER; i++) {
-        lv_chart_set_next(chart_st.chart, chart_st.pitch_line, 50);
-        lv_chart_set_next(chart_st.chart, chart_st.roll_line, 50);
+        lv_chart_set_next(chart_st.chart, chart_st.pitch_line, CHART_OFFSET_VALUE);
+        lv_chart_set_next(chart_st.chart, chart_st.roll_line, CHART_OFFSET_VALUE);
     }
 }
 
@@ -64,17 +68,19 @@ static void update_chart_task(lv_task_t *task)
 
 #ifdef EMBEDDED
     imu_get_pitch_and_roll(&pitch, &roll);
+#else
+    imu_get_pitch_and_roll_simulator(&pitch, &roll);
 #endif
     
-    _gui_update_chart_points(chart, pitch,roll);
+    _gui_update_chart_points(chart, pitch, roll);
 }
 
 static void _gui_update_chart_points(gui_chart_st *chart, int16_t pitch, int16_t roll)
 {
     for (int i = 0; i < CHART_POINTS_NUMBER; i++) {
         if (i == (CHART_POINTS_NUMBER - 1)) {
-            chart->pitch_line->points[i] = (int16_t)pitch + 50;
-            chart->roll_line->points[i] = (int16_t)roll + 50;
+            chart->pitch_line->points[i] = (int16_t)pitch + CHART_OFFSET_VALUE;
+            chart->roll_line->points[i] = (int16_t)roll + CHART_OFFSET_VALUE;
         } else {
             chart->pitch_line->points[i] = chart->pitch_line->points[i + 1];
             chart->roll_line->points[i] = chart->roll_line->points[i + 1];
@@ -82,3 +88,22 @@ static void _gui_update_chart_points(gui_chart_st *chart, int16_t pitch, int16_t
     }
     lv_chart_refresh(chart->chart);
 }
+
+#ifndef EMBEDDED
+static void  imu_get_pitch_and_roll_simulator(int16_t *pitch, int16_t *roll)
+{
+    static int16_t pitch_s, roll_s = 20;
+    pitch_s ++;
+    roll_s --;
+
+    if (pitch_s >= 20) {
+        pitch_s = 0;
+    }
+
+    if (roll_s <= 0) {
+        roll_s = 20;
+    }
+    *roll = roll_s;
+    *pitch = pitch_s;
+}
+#endif

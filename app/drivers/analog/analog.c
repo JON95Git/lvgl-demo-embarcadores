@@ -37,13 +37,13 @@ void get_analog_value(uint32_t *analog_value)
 
 static void analog_stop(void)
 {
-	HAL_NVIC_DisableIRQ(ANALOG_DMA_IRQn);
+    HAL_NVIC_DisableIRQ(ANALOG_DMA_IRQn);
     HAL_NVIC_DisableIRQ(ANALOG_ADC_IRQn);
 }
 
 static void analog_enable_irq(void)
 {
-	HAL_NVIC_EnableIRQ(ANALOG_DMA_IRQn);
+    HAL_NVIC_EnableIRQ(ANALOG_DMA_IRQn);
     HAL_NVIC_EnableIRQ(ANALOG_ADC_IRQn);
 }
 

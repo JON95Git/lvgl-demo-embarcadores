@@ -3,10 +3,13 @@
 static gui_gauge_st gauge_st;
 
 static void update_gauge(lv_task_t * task);
-
 static void _gui_create_gauge(lv_obj_t *parent);
 static void _gui_set_gauge_needle(void);
 static void _gui_create_gauge_task(void);
+
+#ifndef EMBEDDED
+static void get_analog_value_simulator(uint32_t *analog_value);
+#endif
 
 void gui_create_gauge(lv_obj_t *parent)
 {
@@ -45,8 +48,22 @@ static void update_gauge(lv_task_t *task)
 
 #ifdef EMBEDDED
     get_analog_value(&analog_value);
+#else
+   get_analog_value_simulator(&analog_value);
 #endif
 
     res = (analog_value / ANALOG_RAW_TO_GAUGE_MAX_VALUE);
     lv_gauge_set_value(gauge->gauge, 0, (int32_t)res);
 }
+
+#ifndef EMBEDDED
+static void get_analog_value_simulator(uint32_t *analog_value)
+{
+    static int16_t analog;
+    analog += 10;
+    if (analog >= 4096) {
+        analog = 0;
+    }
+    *analog_value = analog;
+}
+#endif

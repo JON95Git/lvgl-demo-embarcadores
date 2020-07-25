@@ -9,6 +9,8 @@
 #include "tim.h"
 #include "hardware.h"
 
+#define ENCODER_DEBOUNCE_TIME 300
+
 extern volatile int32_t encoder_value;
 extern bool encoder_btn_flag;
 extern bool user_btn_flag;
